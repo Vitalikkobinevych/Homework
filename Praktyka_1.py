@@ -1,26 +1,43 @@
-print ("Enter your numbers")
-try:
-    number_1, number_2, number_3 = (input().split(" "))
-except ValueError:
-    print("Invalid value")
-def rozryad_1(x):
-    return x % 10
-def rozryad_2(y):
-    return int((y % 100) / 10)
-def rozryad_3(z):
-    return int((z % 1000) / 100)
-result_1 = str(rozryad_3(int(number_1)) + rozryad_3(int(number_2))) + str(rozryad_2(int(number_1)) + rozryad_2(int(number_2))) + str(rozryad_1(int(number_1)) + rozryad_1(int(number_2)))
-result_2 = str(rozryad_3(int(number_1)) + rozryad_3(int(number_3))) + str(rozryad_2(int(number_1)) + rozryad_2(int(number_3))) + str(rozryad_1(int(number_1)) + rozryad_1(int(number_3)))
-result_3 = str(rozryad_3(int(number_2)) + rozryad_3(int(number_3))) + str(rozryad_2(int(number_2)) + rozryad_2(int(number_3))) + str(rozryad_1(int(number_2)) + rozryad_1(int(number_3)))
-if int(number_1) >=1 and int(number_1) <= 106:
-    if int(number_2) >= 1 and int(number_2) <= 106:
-        if int(number_3) >= 1 and int(number_3) <= 106:
-            print(result_1)
-            print(result_2)
-            print(result_3)
-        else:
-            print("Wrong numbers")
-    else:
-        print("Wrong numbers")
-else:
-    print("Wrong numbers")
+def suma_1(n1, n2, n3):
+    sum_1 = n1 + n2
+    sum_2 = n1 + n3
+    sum_3 = n2 + n3
+    print(sum_1, sum_2, sum_3, sep="\n")
+
+def rozryady(n):
+    if n > 999:
+        print("Your number is huge")
+        int_input_array()
+    rozryad_1 = n % 10
+    rozryad_2 = int((n % 100) / 10)
+    rozryad_3 = int((n % 1000) / 100)
+    return rozryad_1, rozryad_2, rozryad_3
+
+def func(n1, n2):
+    y = rozryady(n1) + rozryady(n2)
+    return str(y[5] + y[2]) + str(y[1] + y[4]) + str(y[0] + y[3])
+
+def suma_2(n1, n2, n3):
+    sum_x = func(n1, n2)
+    sum_y = func(n1, n3)
+    sum_z = func(n2, n3)
+    print(sum_x), print(sum_y), print(sum_z)
+
+def int_input_array(m = ""):
+    try:
+        numbers = (input().split(" "))
+        for i in range(len(numbers)):
+            numbers[i] = int(numbers[i])
+    except ValueError:
+        print("Enter 3 numbers with a space")
+        return int_input_array(m)
+    if (len(numbers) < 3):
+        return int_input_array(m)
+    return numbers
+def main():
+    print("Enter your numbers")
+    n = int_input_array()
+    suma_1(n[0], n[1], n[2])
+    print("-----------------")
+    suma_2(n[0], n[1], n[2])
+main()

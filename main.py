@@ -1,22 +1,19 @@
-def input_rozmir():
+def check_int():
     try:
-        n = int(input("Введіть розмір матриці: "))
+        x = int(input("Введіть число "))
     except ValueError:
-        print("Неправильне значення ")
-        input_rozmir()
-    if n < 1:
-        print("Розмір має бути більше 0 ")
-        input_rozmir()
+        print("Invalid value")
+        print("Must be number ")
+        return check_int()
+    return x
+def check_rozmir():
+    n = check_int()
+    if n <= 0:
+        print("Number must be > 0 ")
+        return check_rozmir()
     return n
-def input_element():
-    try:
-        element = int(input("Введіть елемент матриці: "))
-    except ValueError:
-        print("Неправильне значення ")
-        input_element()
-    return element
 def input_matrix():
-    matrix = [[input_element()for y in range(n)]for x in range(n)]
+    matrix = [[check_int()for y in range(n)]for x in range(n)]
     return matrix
 def search():
     j = 0
@@ -34,7 +31,7 @@ def search():
             print("None")
         j = j + 1
     return 0
-n = input_rozmir()
+n = check_rozmir()
 matrix = input_matrix()
 for im in range(n):
     print(matrix[im])

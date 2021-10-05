@@ -28,7 +28,9 @@ def check_2():
         print("Number must be > 0 ")
         return check_2()
     return n
-arr = int_arr()
-print(arr)
-print("----------")
-print(sort(arr))
+def main():
+    arr = int_arr()
+    print(arr)
+    print("----------")
+    print(sort(arr))
+main()

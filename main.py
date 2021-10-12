@@ -23,6 +23,7 @@ def search():
     matrix = input_matrix(n)
     j = 0
     i = 0
+    min = 0
     print_matrix(matrix, n)
     while j < n:
         if int(matrix[j][j]) <= 0:
@@ -35,4 +36,18 @@ def search():
             i = 0
         j = j + 1
     print(min)
-search()
+
+def console():
+    print("Enter 1 for exit or 2 for repeat")
+    n = check_int()
+    if n == 2:
+        main()
+    elif n == 1:
+        exit()
+    else:
+        print("Incorect")
+        console()
+def main():
+    search()
+    console()
+main()

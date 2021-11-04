@@ -1,53 +1,57 @@
-def check_int():
-    try:
-        x = int(input("Введіть число "))
-    except ValueError:
-        print("Invalid value")
-        print("Must be number ")
-        return check_int()
-    return x
-def check_rozmir():
-    n = check_int()
-    if n <= 0:
-        print("Number must be > 0 ")
-        return check_rozmir()
-    return n
-def input_matrix(n):
-    matrix = [[check_int()for y in range(n)]for x in range(n)]
-    return matrix
-def print_matrix(matrix, n):
-    for im in range(n):
-        print(matrix[im])
-def search():
-    n = check_rozmir()
-    matrix = input_matrix(n)
-    j = 0
-    i = 0
-    min = 0
-    print_matrix(matrix, n)
-    while j < n:
-        if int(matrix[j][j]) <= 0:
-            while i < n:
-                if matrix[j][i - 1] < matrix[j][i]:
-                    min = matrix[j][i - 1]
-                else:
-                    min = matrix[j][i]
-                i = i + 1
-            i = 0
-        j = j + 1
-    print(min)
+from Validation import Validation
+from Collection import Collection
+from os.path import exists
+import sys
 
-def console():
-    print("Enter 1 for exit or 2 for repeat")
-    n = check_int()
-    if n == 2:
-        main()
-    elif n == 1:
-        exit()
-    else:
-        print("Incorect")
-        console()
-def main():
-    search()
-    console()
-main()
+class CarReservation(Validation):
+    list_of_cars = ["Audi A3", "BMW X1", "Toyota Yaris", "Volkswagen T-Roc", "Ford Fiesta", "Honda Civic",
+                    "Volkswagen Golf"]
+
+
+
+    def __init__(self, id, car, start_datetime, end_datetime, name, price):
+        self._id = Validation.check_id(id)
+        self.car = Validation.check_car(car, self.list_of_car)
+        self.start_datetime = Validation.validate_date(start_datetime)
+        self.end_datetime = Validation.validate_date(end_datetime)
+        self.name = Validation.check_name(name)
+        self.price = Validation.check_price(price)
+
+
+    def set_id(self, value):
+        self.id = value
+
+    def get_id(self):
+        return self.id
+
+    def set_car(self, value):
+        self.car = value
+
+    def get_car(self):
+        return self.car
+
+    def set_star_datetime(self, value):
+        self.start_datetime = value
+
+    def get_start_datetime(self):
+        return self.start_datetime
+
+    def set_end_datetime(self, value):
+        self.end_datetime = value
+
+    def get_end_datetime(self):
+        return self.end_datetime
+
+    def set_name(self, value):
+        self.name = value
+
+    def get_name(self):
+        return self.name
+
+    def set_price(self, value):
+        self.price = value
+
+    def get_price(self):
+        return self.price
+
+с = Collection('Car.txt')

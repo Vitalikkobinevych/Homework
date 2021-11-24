@@ -1,0 +1,3 @@
+{"_id": 1, "_recipient_name": "name", "_recipient_iban": "iban", "_bank": "privatbank", "_payment_type": "monthly", "_amount": 2500, "_payment_datetime": "2020-05-20"}
+{"_id": 2, "_recipient_name": "nametwoo", "_recipient_iban": "ibanbbb", "_bank": "universal_bank", "_payment_type": "monthly", "_amount": 210, "_payment_datetime": "2019-06-26"}
+{"_id": 3, "_recipient_name": "ha", "_recipient_iban": "12", "_bank": "privatbank", "_payment_type": "yearly", "_amount": "123", "_payment_datetime": "2020-06-06"}
